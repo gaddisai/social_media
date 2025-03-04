@@ -46,8 +46,30 @@ function showProfile(id){
     .then((data)=>{
             str+=`
             <div>
-            <b>Name: ${data.name}</b><br>
-            <b>Email: ${data.email}</b>
+            <tr>
+                <td><b>Name:</b>    </td>
+                <td>${data.name}</td>
+            </tr><br>
+            <tr>
+                <td><b>username:</b>    </td>
+                <td>${data.username}</td>
+            </tr><br>
+            <tr>
+                <td><b>email:</b>      </td>
+                <td>${data.email}</td>
+            </tr><br>
+            <tr>
+                <td><b>phone:</b>   </td>
+                <td>${data.phone}</td>
+            </tr><br>
+            <tr>
+                <td><b>website:</b> </td>
+                <td>${data.website}</td>
+            </tr><br>
+            <tr>    
+                <td><b>company:</b> </td>
+                <td>${data.company.name}</td>
+            </tr><br>
             </div>
             `;
         content.innerHTML=str;
@@ -55,11 +77,33 @@ function showProfile(id){
     .catch((err)=>console.log(err))
 }
 
-
+function showUsername(username){
+    let str = `<h3 class="text-white">${username}</h3>`;
+    let user=document.getElementById('username');
+    user.innerHTML=str;
+}
+function showTodo(id){
+    let str=""
+    fetch(`https://jsonplaceholder.typicode.com/todos?userId=${id}`)
+    .then((res)=>res.json())
+    .then((data)=>{
+        data && data.map((value)=>{
+            str+=`
+            <div>
+            <input type="checkbox" ${value.completed && "checked"}><b>${value.title}</b><br>
+            <b>${value.completed}</b>
+            </div>
+            `;
+        });
+        content.innerHTML=str;
+    })
+    .catch((err)=>console.log(err))
+}
 
 
 function showHome(){
     userId = selUser.value;
+    let selectedUser = selUser.options[selUser.selectedIndex].text;
     let str = `<div>
     <div class="d-flex flex-row bg-primary p-2">
     <div class="col-6">
@@ -71,13 +115,16 @@ function showHome(){
     <div class="col-2">
     <div class="d-flex flex-column mt-5">
     <h4 class="p-2">
-    <a href="#" class="p-2 onclick="showHome()">Home</a>
+    <a href="#" class="p-2" onclick="showPosts(${userId})">Home</a>
     </h4>
     <h4 class="p-2">
     <a href="#" class="p-2" onclick="showAlbums(${userId})">Album</a>
     </h4>
     <h4 class="p-2">
     <a href="#" class="p-2" onclick="showProfile(${userId})">Profile</a>
+    </h4>
+    <h4 class="p-2">
+    <a href="#" class="p-2" onclick="showTodo(${userId})">Todo</a>
     </h4>
     <h4 class="p-2">
     <a href="#" class="p-2" onclick="showLogin()">Logout</a>
@@ -90,7 +137,9 @@ function showHome(){
     `;           
     root.innerHTML = str;
     showPosts(userId);
+    showUsername(selectedUser);
 }
+
 function displayUsers(data){
     let str=`
     <div class="container-fluid d-flex flex-column justify-content-center" style="height: 100vh;">
