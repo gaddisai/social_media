@@ -105,33 +105,33 @@ function showHome(){
     userId = selUser.value;
     let selectedUser = selUser.options[selUser.selectedIndex].text;
     let str = `<div>
-    <div class="d-flex flex-row bg-primary p-2">
+    <div class="top_section d-flex flex-row p-2">
     <div class="col-6">
     <h3 class="text-white">Quick Connect</h3>
     </div>
     <div id="username" class="col-6 d-flex flex-row justify-content-end"></div>
     </div>
     <div class="d-flex flex-row">
-    <div class="col-2">
-    <div class="d-flex flex-column mt-5">
-    <h4 class="p-2">
-    <a href="#" class="p-2" onclick="showPosts(${userId})">Home</a>
-    </h4>
-    <h4 class="p-2">
-    <a href="#" class="p-2" onclick="showAlbums(${userId})">Album</a>
-    </h4>
-    <h4 class="p-2">
-    <a href="#" class="p-2" onclick="showProfile(${userId})">Profile</a>
-    </h4>
-    <h4 class="p-2">
-    <a href="#" class="p-2" onclick="showTodo(${userId})">Todo</a>
-    </h4>
-    <h4 class="p-2">
-    <a href="#" class="p-2" onclick="showLogin()">Logout</a>
-    </h4>
+    <div class="col-1 mid_section_left">
+    <div class="d-flex flex-column">
+    <p class="p-2 ">
+    <a href="#" class="p-2 text-white" onclick="showPosts(${userId})">Home</a>
+    </p>
+    <p class="p-2">
+    <a href="#" class="p-2 text-white" onclick="showAlbums(${userId})">Album</a>
+    </p>
+    <p class="p-2">
+    <a href="#" class="p-2 text-white" onclick="showProfile(${userId})">Profile</a>
+    </p>
+    <p class="p-2">
+    <a href="#" class="p-2 text-white" onclick="showTodo(${userId})">Todo</a>
+    </p>
+    <p class="p-2">
+    <a href="#" class="p-2 text-white" onclick="showLogin()">Logout</a>
+    </p>
     </div>
     </div>
-    <div class="col-10" id="content"></div>
+    <div class="col-11 p-3 mid_section_right text-white" id="content"></div>
     </div>
     </div>
     `;           
