@@ -1,4 +1,14 @@
 .card{
-    background-color: silver;
+    background-color: lightseagreen;
     height: 30vh;
+}
+.container-fluid{
+    background-image: url("images/background-theme.webp");
+    background-size: cover;
+    height: 100vh;
+}
+.top_header{
+    background-color: lightyellow;
+    height: 10vh;
+    width: 100%;
 }
